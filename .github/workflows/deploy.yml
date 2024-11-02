@@ -46,8 +46,10 @@ jobs:
           aws-region: eu-central-1
         
       - name: Add SSH key to known hosts
-        run: ssh-keyscan -H ${{ secrets.AWS_HOST }} >> ~/.ssh/known_hosts
-
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ec2-63-176-96-30.eu-central-1.compute.amazonaws.com >> ~/.ssh/known_hosts
+  
       - name: Run Ansible playbook
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
