@@ -1,6 +1,6 @@
 all:
   hosts:
     weather-app:
-      ansible_host: ec2-63-176-96-30.eu-central-1.compute.amazonaws.com  # Ваш Public DNS з EC2
+      ansible_host: ${{ secrets.AWS_HOST }}  
       ansible_user: ubuntu
       ansible_ssh_private_key_file: ~/.ssh/your-key.pem
