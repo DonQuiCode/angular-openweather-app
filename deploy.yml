@@ -1,0 +1,40 @@
+---
+- name: Deploy Weather App
+  hosts: weather-app
+  become: yes
+  vars:
+    docker_image: "{{ lookup('env', 'DOCKERHUB_USERNAME') }}/weather-app:latest"
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - docker.io
+          - python3-pip
+        state: present
+        update_cache: yes
+
+    - name: Install Docker Python module
+      pip:
+        name: docker
+        state: present
+
+    - name: Pull Docker image
+      docker_image:
+        name: "{{ docker_image }}"
+        source: pull
+        force_source: yes
+
+    - name: Stop and remove existing container
+      docker_container:
+        name: weather-app
+        state: absent
+      ignore_errors: yes
+
+    - name: Run Docker container
+      docker_container:
+        name: weather-app
+        image: "{{ docker_image }}"
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"

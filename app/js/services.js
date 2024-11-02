@@ -13,7 +13,7 @@ angular.module('openWeatherApp.services', ['ngResource'])
   //
   // Define a standard list of "example locations"
   //
-  .value('exampleLocations',['Hamburg','San Francisco','Berlin','Athens','Tokyo','New York','Moscow','Clonakilty'])
+  .value('exampleLocations',['Kyiv','Lviv','Mukachevo','Hamburg','San Francisco','Berlin','Athens','Tokyo','New York','Clonakilty'])
   //
   // Storm "Xaver" special locations
   //
