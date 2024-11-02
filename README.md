@@ -88,7 +88,7 @@ for desktop and mobile use?
 
 
 ## Todo
-
+* Test
 * Make use (and parse) more provided weather data (+ add filters, formatting)
 * Internationalization / Localization
 * Provide "use current location" and fetch data via lat/lon
