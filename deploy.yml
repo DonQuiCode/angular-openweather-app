@@ -17,6 +17,8 @@
       pip:
         name: docker
         state: present
+      args:
+        extra_args: "--break-system-packages"
 
     - name: Pull Docker image
       docker_image:
