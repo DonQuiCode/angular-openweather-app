@@ -10,10 +10,10 @@ COPY . .
 # Stage 2: Setup Nginx
 FROM nginx:alpine
 
-# Копіюємо статичні файли
+# Setup Nginx
 COPY --from=builder /app/app /usr/share/nginx/html
 
-# Копіюємо конфігурацію Nginx
+# Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
